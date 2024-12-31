@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JingZiQi</title>
+<script src="./vue.js"></script>
+<link rel="stylesheet" href="./pan.css">
+</head>
+<body>
+    <div id="box">
+        <span style="font-size: 50px;">井字棋</span>
+        <p>当前玩家是{{currentPlayer}}</p>
+        <div id="QiPan">
+        <div v-for="p in 9" class="qblock" @click="placexo(p)">{{pan[p]}}</div>
+        </div>
+        <button @click="AI()">启用AI</button>
+        <button @click="clear()">Restart</button>
+    </div>
+</body>
+<script src="./qi.js"></script>
+</html>
