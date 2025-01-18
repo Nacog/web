@@ -16,6 +16,7 @@ const app=new Vue({
             setTimeout(() => {
                 if (this.isWin()){
                 alert(`玩家 ${this.currentPlayer} 获胜!`);
+                this.currentPlayer='X';
                 this.clear();
                 return;
             }
@@ -59,9 +60,20 @@ const app=new Vue({
         clear(){
             this.pan=Array(10).fill("");
             this.turns=0;
+            this.usingAI=false;
         },
         AI(){
-            alert("正在开发")
+            this.usingAI=true;
+            if(this.currentPlayer=="X") return;
+            setTimeout(() => {
+            const p=Math.floor(Math.random()*9)+1;
+            if(this.pan[p]==""){
+                this.placexo(p);
+            }else{
+                this.AI();
+            }
+            }, 100);
+           
         }
     },
     })
